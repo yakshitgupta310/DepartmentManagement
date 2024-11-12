@@ -1,5 +1,6 @@
 package com.practice.DepartmentManagement.controller;
 
+import com.practice.DepartmentManagement.ErrorHandling.DepartmentNotFoundException;
 import com.practice.DepartmentManagement.entity.Department;
 import com.practice.DepartmentManagement.service.DepartmentService;
 import jakarta.validation.Valid;
@@ -25,7 +26,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/departments/id/{Id}")
-    public Department getDepartmentbyId(@PathVariable("Id") Long Id){
+    public Department getDepartmentbyId(@PathVariable("Id") Long Id) throws DepartmentNotFoundException {
         LOGGER.info("Inside Get Request for fetching Department By Id");
         return departmentService.getDepartmentById(Id);
     }
